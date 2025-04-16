@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zadet School Result Website</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <header class="active">
+    <a href="#" class="logo">Sierra Store</a>
+    <img src="bars.png" id="menu-icon">
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Blog</a>
+      <a href="#">Order</a>
+      <a href="#">Contact</a>
+
+
+    </nav>
+    <div class="cart-box">
+      <img src="cart3.png" alt="">
+      <h1 class="cart-indicator">0</h1>
+    </div>
+  </header>
+  <div class="bars-box active">
+    <div class="bar" style="--i:6;"></div>
+    <div class="bar" style="--i:5;"></div>
+    <div class="bar" style="--i:4;"></div>
+    <div class="bar" style="--i:3;"></div>
+    <div class="bar" style="--i:2;"></div>
+    <div class="bar" style="--i:1;"></div>
+  </div>
+  <section class="home active" id="homesection">
+    <div class="home-detail">
+      <h1>ZADET</h1>
+      <br>
+      <h2>We offer
+        <span style="--i:4;" data-text="Day Care">Day Care</span>
+
+        <span style="--i:3;" data-text="Nursery, Primary">Nursery, Primary</span>
+        <span style="--i:2;" data-text="Junior Secondary">Junior Secondary</span>
+        <span style="--i:1;" data-text="Senior Secondary">Senior Secondary</span>
+      </h2>
+      <p>Welcome to Zadet Preparatory & International Secondary School, Here at Zadet we offer Day care services,
+        Primary, Junior and Senior secondary education
+        at the outmost level of education. We priortise the well being of our kids cause they are the future
+        leaders. Contact Us now so your child can get the
+        proper education he or she deserves.
+      <div class="btn-sci">
+        <a href="#" class="btn" id="homeBtn">Contact Us</a>
+        <div class="sci">
+          <a href="#"><img src="github.png" class="bx bxl-github"></a>
+          <a href="#"><img src="tiktok.png" class="bx bxl-tiktok"></a>
+          <a href="#"><img src="whatapp.png" class="bx bxl-youtube"></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="home-img">
+      <div class="img-box">
+        <div class="img-item">
+          <img src="zadet badge.PNG">
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="products" id="products-section">
+    <div class="product-container">
+      <div class="search-box">
+        <input type="search" class="search-engines" id="search" placeholder="Search Products">
+      </div>
+      <div class="filter-box">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Electronics">Electronics</button>
+        <button class="filter-btn" data-filter="Fashion">Fashion</button>
+        <button class="filter-btn" data-filter="Groceries">Groceries</button>
+        <button class="filter-btn" data-filter="Home Furniture">Home Furniture</button>
+        <button class="filter-btn" data-filter="Health & Beauty">Health & Beauty</button>
+        <button class="filter-btn" data-filter="Sports & Fitness">Sports & Fitness</button>
+        <button class="filter-btn" data-filter="Automotive">Automotive</button>
+      </div>
+      <div class="products-container">
+        <div class="product-box">
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="check-box">
+          <button class="btn" id="check-btn">Check Order</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section class="blog" id="blogsection">
+    <h2 class="heading">Recent <span>School Blogs</span></h2>
+    <div class="blog-container">
+      <div class="blog-live">
+        <div class="blog-tv">
+
+
+
+        </div>
+
+      </div>
+      <div class="services-container">
+        <div class="services-box">
+          <div class="icon">
+            <h1>ZPISS</h1>
+          </div>
+          <h3>School Outing!!!</h3>
+          <p>A fun day awaits us, location unknown yet, date on february 8th. Join us or watch it on our live
+            stream.
+          </p>
+
+        </div>
+        <div class="services-box">
+          <div class="icon">
+            <h1>ZPISS</h1>
+          </div>
+          <h3>Thanksgiving </h3>
+          <p>A well blessed day to prais and Thank our creator for his mercy and grace. click to watch videos
+          </p>
+
+        </div>
+        <div class="services-box">
+          <div class="icon">
+            <h1>ZPISS</h1>
+          </div>
+          <h3>Graduation Ceremony</h3>
+          <p>It was time for our students to graduate to another level and rise to new heights. click to watch
+            videos
+          </p>
+
+        </div>
+        <div class="services-box">
+          <div class="icon">
+            <h1>ZPISS</h1>
+          </div>
+          <h3>Christmas Party</h3>
+          <p>Another day to be happy and thank our creator for his mercy and grace. click to watch the videos
+          </p>
+
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+  </section>
+  <section class="order" id="order-section">
+    <div id="order-main-container">
+      <div id="order-container">
+        <h2>Order Receipt</h2>
+        <div id="order-receipt">
+          <h3>Order Details</h3>
+          <table id="order-receipt-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+
+          </table>
+          <div class="sum-of-all">
+            <p id="total-price">Total: Le 0</p>
+            <p id="delivery-fee">Delivery Fee: Le 5</p>
+            <p id="final-total">Final Total: Le 0</p>
+          </div>
+
+
+
+          <input type="text" id="user-name" placeholder="Your Name" required>
+
+
+          <input type="text" id="user-number" placeholder="Your Phone Number" required>
+
+
+          <input type="text" id="user-address" placeholder="Your Address Here" required>
+
+          <div class="whats-btn-box">
+            <button id="order-now-btn" onclick="handleOrderNow()" class="btn">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <section class="contact" id="contactsection">
+    <div class="contact-container">
+      <div class="contact-box">
+        <h2>Let's work Together</h2>
+        <p class="desc">Cause Together we can educate our kids for a better future</p>
+        <div class="contact-detail">
+          <img src="17847648.png" alt="">
+          <div class="detail">
+            <p>Phone</p>
+            <p>+232 79728028</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <img src="contacticon.png" alt="">
+          <div class="detail">
+            <p>Email</p>
+            <p>zadetschool@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <img src="homeicon.png" alt="">
+          <div class="detail">
+            <p>Address</p>
+            <p>30 Parsonage street, Shell.</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-box">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <h2 class="heading">Contact <span>Us!</span></h2>
+          <div class="field-box">
+            <input type="hidden" name="access_key" value="9049107d-170d-41df-9a6b-f982dbd392e2">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Phone Number" required>
+            <input type="text" placeholder="Email Subject" required>
+            <textarea name="message" id="" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+
+        </form>
+      </div>
+    </div>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="script.js"></script>
