@@ -536,29 +536,61 @@ section.active{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
   
 }
-.filter-box{
+
+.filter-box {
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    
     width: 100%;
     overflow-x: auto;
-    height: 60px;
-    overflow-y: hidden;
+    padding: 10px;
+    scroll-behavior: smooth;
 }
-.filter-box::-webkit-scrollbar{
-    width: .1rem;
+
+.filter-box::-webkit-scrollbar {
+    height: 4px;
 }
-.filter-box::-webkit-scrollbar-thumb{
+
+.filter-box::-webkit-scrollbar-thumb {
     background: transparent;
     border-radius: 1rem;
 }
-.filter-box:hover::-webkit-scrollbar-thumb{
+
+.filter-box:hover::-webkit-scrollbar-thumb {
     background: var(--main-color);
 }
+
+.filter-btn {
+    display: inline-block; /* or flex, either works */
+    width: auto; /* key line to avoid unnecessary width */
+    flex-shrink: 0;
+    padding: 0.4rem 1rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: 2rem;
+    box-shadow: 0 0 0.5rem var(--main-color);
+    font-size: 1.8rem;
+    color: var(--bg-color);
+    font-weight: 500;
+    transition: .3s;
+    white-space: nowrap; /* prevent wrap */
+    text-align: center;
+}
+
+
+.filter-btn:hover {
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: none;
+}
+
+
+
 .check-box{
     display: flex;
     justify-content: center;
@@ -571,18 +603,14 @@ section.active{
 }
 
 
-.filter-box button{
-    cursor: pointer;
-    font-weight: bold;
-  
-    
-    
 
-   
-}
+
+
+
 .logo span{
     color: var(--main-color);
 }
+
 .product-card{
     width: 280px;
     height: 380px;
@@ -616,6 +644,7 @@ section.active{
     width: 100%;
     max-height: 60vh;
     margin-top: 20px;
+    
  
     
 }
@@ -640,24 +669,7 @@ section.active{
     height: 60px;
     
 }
-/* filter options */
-.filter-btn{
-    display: inline-block;
-    padding: 1rem 3rem;
-    background: var(--main-color);
-    border: .2rem solid var(--main-color);
-    border-radius: 4rem;
-    box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1.6rem;
-    color: var(--bg-color);
-    font-weight: 500;
-    transition: .5s;
-}
-.filter-btn:hover{
-    background: transparent;
-    color: var(--main-color);
-    box-shadow: none;
-}
+
 /* filter hidden*/
 .hidden {
     display: none;
@@ -867,15 +879,19 @@ section.active{
     html{
         font-size: 55%;
     }
-    .blog-tv{
-        width: 500px;
-        height: 300px;
+    .product-container{
+        margin-top: 2rem;
     }
-    .live-channel{
-        width: 480px;
-        height: 280px;
+    .search-box{
+        margin-bottom: 1rem;
     }
-    
+    .filter-box{
+        width: 100%;
+    }
+    .product-box{
+        margin-left: 2rem;
+    }
+
     
 
     
@@ -896,6 +912,18 @@ section.active{
     .blog-tv{
         width: 400px;
         height: 300px;
+    }
+    .product-card{
+        width: 230px;
+        height: 340px;
+    }
+    .product-card img{
+        width: 140px;
+        height: 140px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        margin-left: 0;
     }
 }
 @media screen and (max-width:768px) {
@@ -969,13 +997,12 @@ section.active{
     .contact-box .field-box{
         grid-template-columns: 1fr;
     }
-    .blog-container{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+   
     section{
         min-height: 100vh;
+    }
+    .product-box{
+        margin-left: 2rem;
     }
     
 }
@@ -986,6 +1013,27 @@ section.active{
     }
     section{
         min-height: 100vh;
+    }
+    .product-box button{
+        width: 60%;
+    }
+    #check-btn{
+        width: 60%;
+    }
+    .product-card{
+        width: 190px;
+        height: 330px;
+    }
+    .product-card img{
+        width: 150px;
+        height: 150px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        margin-left: 0;
+    }
+    .product-card button{
+        width: 80%;
     }
 
 }
@@ -1013,6 +1061,20 @@ section.active{
     }
     .contact-box h2{
         font-size: 3.5rem;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .product-card p{
+        display: none;
+    }
+    .product-card{
+        height: 300px;
+        width: 170px;
+    }
+    .product-card img{
+        width: 140px;
+        height: 140px;
     }
 }
 
@@ -1077,6 +1139,17 @@ section.active{
         width: 250px;
         height: auto;
     }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        margin-left: 4rem;
+    }
+
+    .product-card{
+        width: 80%;
+    }
+    .product-card p{
+        display: flex;
+    }
 }
 
 @media screen and (max-width:330px){
@@ -1104,5 +1177,8 @@ section.active{
     }
     section{
         min-height: 100vh;
+    }
+    .product-card p{
+        display: flex;
     }
 }
