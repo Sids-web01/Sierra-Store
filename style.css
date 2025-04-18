@@ -1042,6 +1042,91 @@ section.active{
 
 }
 
+
+@media screen and (max-width:430px){
+    .product-card{
+        width: 180px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin-left: 0;
+    }
+    
+    }
+
+@media screen and (max-width:425px){
+    .product-card{
+        width: 180px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin-left: 0;
+    }
+    
+    }
+
+@media screen and (max-width:420px){
+    .product-card{
+        width: 180px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin-left: 0;
+    }
+    
+    }
+    @media screen and (max-width:415px){
+        .product-card{
+            width: 180px;
+        }
+        .product-box{
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            margin-left: 0;
+        }
+        
+        }
+
+
+
+        
+@media screen and (max-width:410px){
+    .product-card{
+        width: 180px;
+    }
+    .product-box{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin-left: 0;
+    }
+    
+    }
+        
+
+@media screen and (max-width:405px){
+.product-card{
+    width: 180px;
+}
+.product-box{
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin-left: 0;
+}
+
+}
+
+   
+
+
+
+
+       
+
+
+
+
+
+            
+
+
+
 @media screen and (max-width:400px){
     .home-detail, 
     .resume-box h2,
