@@ -1035,6 +1035,10 @@ section.active{
     .product-card button{
         width: 80%;
     }
+    .cart-box img{
+        width: 50px;
+        height: 50px;
+    }
 
 }
 
@@ -1078,45 +1082,35 @@ section.active{
     }
 }
 
-@media screen and (max-width:395px){
-    #studentImage{
-        width: 250px;
-        height: auto;
-    }
-}
 
 @media screen and (max-width:390px){
-    #studentImage{
-        width: 250px;
-        height: auto;
-    }
+   
 }
 
 @media screen and (max-width:385px){
-    #studentImage{
-        width: 250px;
-        height: auto;
-    }
+   
 }
 
 @media screen and (max-width:380px){
-    #studentImage{
-        width: 250px;
-        height: auto;
+    
+    .product-card{
+        height: 280px;
+        width: 165px;
     }
 }
 
 @media screen and (max-width:375px){
-    #studentImage{
-        width: 250px;
-        height: auto;
-    }
+   
 }
 
 @media screen and (max-width:370px){
     #studentImage{
         width: 250px;
         height: auto;
+    }
+    .product-card{
+        height: 280px;
+        width: 160px;
     }
 }
 
@@ -1125,12 +1119,26 @@ section.active{
         width: 210px;
         height: auto;
     }
+    .product-card{
+        height: 280px;
+        width: 155px;
+    }
+    .product-card img{
+        width: 130px;
+        height: 130px;
+    }
+    .product-card button{
+        width: 90%;
+    }
 }
 
 @media screen and (max-width:355px){
     #studentImage{
         width: 230px;
         height: auto;
+    }
+    .product-box{
+        margin-left: .5rem;
     }
 }
 
