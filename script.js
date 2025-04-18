@@ -369,6 +369,48 @@ function collectOrderDetails() {
 
 
 
+ //script for the home slider 
+ const products = [
+  { name: "Smartphone X1", desc: "Latest 5G phone with stunning display.", price: "Le 3,200", img: "https://via.placeholder.com/300x200?text=Smartphone" },
+  { name: "Laptop Pro", desc: "High performance for work and play.", price: "Le 6,500", img: "https://via.placeholder.com/300x200?text=Laptop" },
+  { name: "Running Shoes", desc: "Comfortable and durable for athletes.", price: "Le 850", img: "https://via.placeholder.com/300x200?text=Shoes" },
+  { name: "Blender Max", desc: "Perfect for smoothies and more.", price: "Le 420", img: "https://via.placeholder.com/300x200?text=Blender" },
+  { name: "LED TV", desc: "Crystal-clear viewing experience.", price: "Le 4,300", img: "IMG-20250122-WA0007.jpg" },
+  { name: "Men's Watch", desc: "Stylish and water-resistant.", price: "Le 1,100", img: "IMG-20250122-WA0007.jpg" },
+  { name: "Wireless Earbuds", desc: "Clear sound and long battery.", price: "Le 600", img: "IMG-20250122-WA0007.jpg" }
+];
+
+let current = 0;
+
+function showProduct(index) {
+  const product = products[index];
+  document.getElementById("product-info").innerHTML = `
+    <h2>${product.name}</h2>
+    <p>${product.desc}</p>
+    <p><strong>Price:</strong> ${product.price}</p>
+    <button class="add-to-cart">Add to Cart</button>
+  `;
+  document.getElementById("product-image").innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+  `;
+}
+
+function nextSlide() {
+  current = (current + 1) % products.length;
+  showProduct(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + products.length) % products.length;
+  showProduct(current);
+}
+
+// Auto-slide
+setInterval(nextSlide, 5000);
+showProduct(current);
+
+
+
 
 
 
