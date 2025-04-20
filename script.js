@@ -85,6 +85,8 @@ resumebtns.forEach((btn, idx) => {
     })
 })
 
+
+
 const goToMenuBtn = document.querySelector('#check-btn');
 
 // New button functionality to go to the Menu section
@@ -107,12 +109,14 @@ goToMenuBtn2.addEventListener('click', () => {
     activiepage()  // Call the existing function to reset the active states
 
     // Find the Menu section and add the 'active' class to it
-    const targetSection = document.querySelector('#contactsection')
+    const targetSection = document.querySelector('#products-section')
     targetSection.classList.add('active')
 
     // Optionally, make the button active if you want
     goToMenuBtn2.classList.add('active')
 })
+
+
 
 // Select your 'Go to Order' button
 
@@ -260,7 +264,7 @@ function collectOrderDetails() {
         const itemName = row.cells[0]?.innerText || "Unknown Item";
         const itemQuantity = row.cells[1]?.innerText || "1";
         const itemPrice = row.cells[2]?.innerText || "0";
-        orderDetails += `🍔 *${itemName}* - ${itemQuantity} x ${itemPrice}\n`;
+        orderDetails += `*${itemName}* - ${itemQuantity} x ${itemPrice}\n`;
     });
   
     // Get user details
@@ -371,13 +375,13 @@ function collectOrderDetails() {
 
  //script for the home slider 
  const products = [
-  { name: "Smartphone X1", desc: "Latest 5G phone with stunning display.", price: "Le 3,200", img: "https://via.placeholder.com/300x200?text=Smartphone" },
-  { name: "Laptop Pro", desc: "High performance for work and play.", price: "Le 6,500", img: "https://via.placeholder.com/300x200?text=Laptop" },
-  { name: "Running Shoes", desc: "Comfortable and durable for athletes.", price: "Le 850", img: "https://via.placeholder.com/300x200?text=Shoes" },
-  { name: "Blender Max", desc: "Perfect for smoothies and more.", price: "Le 420", img: "https://via.placeholder.com/300x200?text=Blender" },
+  { name: "Smartphone X1", desc: "Latest 5G phone with stunning display.", price: "Le 3,200", img: "red headset.png" },
+  { name: "Laptop Pro", desc: "High performance for work and play.", price: "Le 6,500", img: "black headset.jpeg" },
+  { name: "Running Shoes", desc: "Comfortable and durable for athletes.", price: "Le 850", img: "blue headset.jpeg" },
+  { name: "Blender Max", desc: "Perfect for smoothies and more.", price: "Le 420", img: "blue headset.jpeg" },
   { name: "LED TV", desc: "Crystal-clear viewing experience.", price: "Le 4,300", img: "IMG-20250122-WA0007.jpg" },
-  { name: "Men's Watch", desc: "Stylish and water-resistant.", price: "Le 1,100", img: "IMG-20250122-WA0007.jpg" },
-  { name: "Wireless Earbuds", desc: "Clear sound and long battery.", price: "Le 600", img: "IMG-20250122-WA0007.jpg" }
+  { name: "Men's Watch", desc: "Ironing Clothes have never been better.", price: "Le 1,100", img: "iron.jpeg" },
+  { name: "Headphones", desc: "Clear sound and long battery.", price: "Le 600", img: "headphone.jpg" }
 ];
 
 let current = 0;
@@ -388,7 +392,12 @@ function showProduct(index) {
     <h2>${product.name}</h2>
     <p>${product.desc}</p>
     <p><strong>Price:</strong> ${product.price}</p>
-    <button class="add-to-cart">Add to Cart</button>
+      <div class="shop-now-box">
+            <button class="add-to-cart">Add to Cart</button>
+    
+            
+
+          </div>
   `;
   document.getElementById("product-image").innerHTML = `
     <img src="${product.img}" alt="${product.name}">
