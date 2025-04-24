@@ -170,13 +170,76 @@ fetch('https://script.google.com/macros/s/AKfycbxNdIQnMfuQ4WitB5sPgf3rmpO9YTWELi
       });
     });
 
+
+     // Search functionality
+const searchInput = document.getElementById('search'); // Reference to the search input
+// Reference to the container where products are displayed
+
+// Function to filter products based on the search query
+function filterProducts(query) {
+ const productCards = document.querySelectorAll('.product-card'); // Get all product cards
+
+ productCards.forEach(card => {
+   const productName = card.querySelector('h2').innerText.toLowerCase(); // Get the product name
+   if (productName.includes(query.toLowerCase())) {
+     card.style.display = 'flex'; // Show product if it matches the query
+   } else {
+     card.style.display = 'none'; // Hide product if it doesn't match
+   }
+ });
+}
+
+// Add event listener to search input to trigger filtering
+searchInput.addEventListener('input', function() {
+ const query = searchInput.value; // Get the current input value
+ filterProducts(query); // Call the filter function with the query
+});
+
+   
+
+   
+
+
+
+   // Filter functionality
+   const filterButtons = document.querySelectorAll('.filter-btn');
+   const productCards = document.querySelectorAll('.product-card');
+
+   filterButtons.forEach(button => {
+     button.addEventListener('click', () => {
+       // Remove active class from all buttons
+       filterButtons.forEach(btn => btn.classList.remove('active'));
+       button.classList.add('active');
+
+       const filter = button.getAttribute('data-filter');
+
+       productCards.forEach(card => {
+         if (filter === 'all') {
+           card.classList.remove('hidden');
+         } else {
+           card.classList.toggle('hidden', !card.classList.contains(filter));
+         }
+       });
+     });
+   });
+ })
+
+
+    
+
+    
+
+    
+
     // Filter and search functionality remains the same...
     // ...
 
-  })
+  
   .catch(error => {
     console.error('Error fetching product data:', error);
   });
+
+  
 
 // Function to convert Google Drive URL to direct image URL
 function convertGoogleDriveUrlToDirectImageUrl(url) {
