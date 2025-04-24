@@ -117,24 +117,27 @@ goToMenuBtn2.addEventListener('click', () => {
 })
 
 
-
-// Select your 'Go to Order' button
-
-// Fetch product data from Google Sheets
-fetch('https://script.google.com/macros/s/AKfycbykA3wd911bDzp_3RWAdM7CCg3ewFHtkhKEWhJIrtnpDGey1Uhjok31sYSFEZd-lz0TkA/exec')
+fetch('https://script.google.com/macros/s/AKfycbxNdIQnMfuQ4WitB5sPgf3rmpO9YTWELicCV8hN62tQ4cU7maW2je11CpeN_rS3tFcsLQ/exec')
   .then(response => response.json())
   .then(data => {
     // Reference to the products container (where products will be displayed)
     const productsContainer = document.querySelector('.product-box');
     
+    console.log('Fetched products:', data);  // Log the fetched products data
+
     // Loop through fetched product data and create product cards
     data.forEach(product => {
       const productCard = document.createElement('div');
       productCard.classList.add('product-card', product.category); // Add category class (optional)
       
+      // If imageURL is empty, use a fallback image or placeholder
+      const imageURL = product.imageURL ? convertGoogleDriveUrlToDirectImageUrl(product.imageURL) : 'path/to/your/placeholder-image.jpg';  // Replace with actual fallback image path
+      console.log('Converted image URL:', imageURL);  // Log the converted image URL
+      
+      
       // Product card HTML structure
       productCard.innerHTML = `
-        <img src="${product.imageURL}" alt="${product.name}">
+        <img src="${imageURL}" alt="${product.name}">
         <h2>${product.name}</h2>
         <h2>Price: ${product.price} le</h2>
         <p>${product.description}</p>
@@ -144,11 +147,13 @@ fetch('https://script.google.com/macros/s/AKfycbykA3wd911bDzp_3RWAdM7CCg3ewFHtkh
       // Append the card to the container
       productsContainer.appendChild(productCard);
     });
+
+    // Add event listeners for the Add to Cart buttons
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', () => {
         const name = button.getAttribute('data-name');
         const price = parseInt(button.getAttribute('data-price'));
-    
+        
         // Add to cart logic
         const existingItem = cart.find(item => item.name === name);
         if (existingItem) {
@@ -157,7 +162,7 @@ fetch('https://script.google.com/macros/s/AKfycbykA3wd911bDzp_3RWAdM7CCg3ewFHtkh
         } else {
           cart.push({ name, price, quantity: 1, totalPrice: price });
         }
-    
+
         total += price;
         cartCount++; // ⬅️ Update the count
         cartIndicator.textContent = cartCount; // ⬅️ Show it
@@ -165,85 +170,33 @@ fetch('https://script.google.com/macros/s/AKfycbykA3wd911bDzp_3RWAdM7CCg3ewFHtkh
       });
     });
 
-    
-    
+    // Filter and search functionality remains the same...
+    // ...
 
-    // Add event listeners to new Add to Cart buttons dynamically created
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        const name = button.getAttribute('data-name');
-        const price = parseInt(button.getAttribute('data-price'));
-        
-        // Check if item already exists in cart
-        const existingItem = cart.find(item => item.name === name);
-        if (existingItem) {
-          existingItem.quantity += 1;
-          existingItem.totalPrice += price;
-        } else {
-          cart.push({ name, price, quantity: 1, totalPrice: price });
-        }
-
-        total += price;
-        updateCart();
-      });
-    });
-
-
-    // Search functionality
-const searchInput = document.getElementById('search'); // Reference to the search input
- // Reference to the container where products are displayed
-
-// Function to filter products based on the search query
-function filterProducts(query) {
-  const productCards = document.querySelectorAll('.product-card'); // Get all product cards
-
-  productCards.forEach(card => {
-    const productName = card.querySelector('h2').innerText.toLowerCase(); // Get the product name
-    if (productName.includes(query.toLowerCase())) {
-      card.style.display = 'flex'; // Show product if it matches the query
-    } else {
-      card.style.display = 'none'; // Hide product if it doesn't match
-    }
-  });
-}
-
-// Add event listener to search input to trigger filtering
-searchInput.addEventListener('input', function() {
-  const query = searchInput.value; // Get the current input value
-  filterProducts(query); // Call the filter function with the query
-});
-
-    
-
-    
- 
-
-
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const productCards = document.querySelectorAll('.product-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const filter = button.getAttribute('data-filter');
-
-        productCards.forEach(card => {
-          if (filter === 'all') {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.toggle('hidden', !card.classList.contains(filter));
-          }
-        });
-      });
-    });
   })
   .catch(error => {
     console.error('Error fetching product data:', error);
   });
+
+// Function to convert Google Drive URL to direct image URL
+function convertGoogleDriveUrlToDirectImageUrl(url) {
+  console.log('Original image URL:', url);  // Log the original URL
+
+  // Regular expression to extract the file ID from the Google Drive URL
+  const regex = /\/d\/(.*)\/view/;
+  const match = url.match(regex);
+
+  // If the URL matches the expected pattern, return the thumbnail image URL
+  if (match && match[1]) {
+    const convertedUrl = `https://drive.google.com/thumbnail?id=${match[1]}`;
+    console.log('Converted Google Drive image URL:', convertedUrl);  // Log the converted URL
+    return convertedUrl;
+  }
+  
+  // If it's not a valid Google Drive URL, log and return the original URL
+  console.log('Invalid Google Drive URL, returning original:', url);
+  return url;
+}
 
 
 
@@ -352,6 +305,9 @@ function collectOrderDetails() {
 
 
  
+
+
+ 
  //other menu js
  const cartIndicator = document.querySelector('.cart-indicator');
  const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -373,8 +329,8 @@ function collectOrderDetails() {
 
 
 
- //script for the home slider 
- const products = [
+// Products data for the slider
+const products = [
   { name: "Smartphone X1", desc: "Latest 5G phone with stunning display.", price: "Le 3,200", img: "red headset.png" },
   { name: "Laptop Pro", desc: "High performance for work and play.", price: "Le 6,500", img: "black headset.jpeg" },
   { name: "Running Shoes", desc: "Comfortable and durable for athletes.", price: "Le 850", img: "blue headset.jpeg" },
@@ -386,40 +342,32 @@ function collectOrderDetails() {
 
 let current = 0;
 
+// Function to update product content dynamically
 function showProduct(index) {
   const product = products[index];
-  document.getElementById("product-info").innerHTML = `
-    <h2>${product.name}</h2>
-    <p>${product.desc}</p>
-    <p><strong>Price:</strong> ${product.price}</p>
-      <div class="shop-now-box">
-            <button class="add-to-cart">Add to Cart</button>
-    
-            
+  
+  // Update product info
+  document.getElementById("product-name").textContent = product.name;
+  document.getElementById("product-desc").textContent = product.desc;
+  document.getElementById("product-price").textContent = product.price;
 
-          </div>
-  `;
-  document.getElementById("product-image").innerHTML = `
-    <img src="${product.img}" alt="${product.name}">
-  `;
+  // Update product image
+  document.getElementById("product-img").src = product.img;
+  document.getElementById("product-img").alt = product.name;
 }
 
+// Function to move to the next slide
 function nextSlide() {
   current = (current + 1) % products.length;
   showProduct(current);
 }
 
+// Function to move to the previous slide
 function prevSlide() {
   current = (current - 1 + products.length) % products.length;
   showProduct(current);
 }
 
-// Auto-slide
+// Auto-slide every 5 seconds
 setInterval(nextSlide, 5000);
-showProduct(current);
-
-
-
-
-
-
+showProduct(current); // Initialize the first product

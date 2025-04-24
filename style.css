@@ -563,6 +563,7 @@ section.active {
 .blog-container {
     display: flex;
     gap: 20px;
+    overflow: hidden;
 
 
 }
@@ -859,6 +860,71 @@ section.active {
     font-size: 2rem;
 }
 
+/* slider */
+.product-slider {
+    width: 100%;
+   
+    
+    overflow: hidden;
+  
+    
+   
+   
+  }
+  #shop-btn{
+    margin-left: 4rem;
+    margin-top: -8rem;
+    margin-bottom: 1rem;
+  }
+
+
+  
+  .slide {
+    display: none;
+    padding: 40px;
+    transition: all 0.3s ease;
+    margin-top: -2rem;
+  }
+
+  .slide.active {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50rem;
+   
+  }
+
+  .product-info {
+    flex: 1;
+  }
+
+  .product-info h2 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .product-info p {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: white;
+  }
+
+  .product-info .price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: green;
+  }
+
+  
+
+  #product-image {
+    flex: 1;
+    text-align: right;
+  }
+
+ 
 
 /* filter hidden*/
 .hidden {
@@ -1297,6 +1363,7 @@ section.active {
     .services-box{
         width: 300px;
     }
+    
 
 }
 

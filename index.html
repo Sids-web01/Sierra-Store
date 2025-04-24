@@ -13,7 +13,6 @@
     <div class="btn-sci">
       <h1 class="logo" id="type-effects">
         <span style="--i:4;" data-text="Sierra Store">Sierra Store</span>
-  
         <span style="--i:3;" data-text="Quick Order">Quick Order</span>
         <span style="--i:2;" data-text="Local Deals.">Local Deals</span>
         <span style="--i:1;" data-text="Best Choice">Best Choice</span>
@@ -47,16 +46,13 @@
     <div class="home-detail">
       <div class="slider">
         <div class="product-info" id="product-info">
-          <h2>Product Name</h2>
-          <p>Short product description goes here.</p>
-          <p><strong>Price:</strong> Le 100</p>
+          <h2 id="product-name">Product Name</h2>
+          <p id="product-desc">Short product description goes here.</p>
+          <p><strong>Price:</strong> <span id="product-price">Le 100</span></p>
           <div class="shop-now-box">
-            <button class="add-to-cart">Add to Cart</button>
-    
-            
-
+              <button class="add-to-cart">Add to Cart</button>
           </div>
-        </div>
+      </div>
       </div>
       <div class="btn-sci">
           
@@ -73,8 +69,8 @@
     </div>
     <div class="home-img">
       <div class="img-box">
-        <div class="img-item" id="product-image">
-          <img src="https://via.placeholder.com/300" alt="Product Image">
+        <div class="img-item" id="product-img">
+          <img src="" alt="Product Image">
 
         </div>
       </div>
@@ -88,16 +84,25 @@
       </div>
       <div class="filter-box">
         <button class="filter-btn active" id="filter1" data-filter="all">All</button>
-        <button class="filter-btn" id="filter2" data-filter="Electronics">Electronics</button>
-        <button class="filter-btn" id="filter3" data-filter="Fashion">Fashion</button>
-        <button class="filter-btn" id="filter4" data-filter="Groceries">Groceries</button>
+        <button class="filter-btn" id="filter2" data-filter="Appliances & Electronics">Appliances & Electronics</button>
+        <button class="filter-btn" id="filter3" data-filter="Clothes & Fashion">Clothes & Fashion</button>
+        <button class="filter-btn" id="filter4" data-filter="food & Groceries">Food & Groceries</button>
         <button class="filter-btn" id="filter5" data-filter="Furniture">Furniture</button>
-        <button class="filter-btn" id="filter6" data-filter="Health & Beauty">Health</button>
-        <button class="filter-btn" id="filter7" id="filter1" data-filter="Sports & Fitness">Sports</button>
+        <button class="filter-btn" id="filter6" data-filter="Health & Beauty">Health & Beauty</button>
+        <button class="filter-btn" id="filter7" data-filter="Sports & Fitness">Sports & Fitness</button>
         <button class="filter-btn" id="filter8" data-filter="Automotive">Automotive</button>
+
       </div>
       <div class="products-container">
         <div class="product-box">
+          <div class="product-card electronics" data-name="Electric Iron" >
+            <img src="" alt="iron">
+            <h2>Electric Iron</h2>
+            <h2>Price: 300 le</h2>
+            <p>ironing clothese have never been simple</p>
+            <button class="add-to-cart" data-name="Electric Iron" data-price="300">Add to Cart</button>
+
+        </div>
          
          
 
@@ -122,7 +127,7 @@
 
   </section>
   <section class="blog" id="blogsection">
-    <h2 class="heading">Recent <span>Blogs</span></h2>
+    <h2 class="heading">Sierra <span>Blogs</span></h2>
     <div class="blog-container">
       
       
