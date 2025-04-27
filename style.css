@@ -1108,6 +1108,22 @@ section.active {
 
 }
 
+/* slider css*/
+#product-name{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+#product-description{
+    font-size: 2.5rem;
+}
+#product-price{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+#add-to-cart-btn{
+    margin-bottom: 1rem;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
 

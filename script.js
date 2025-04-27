@@ -392,45 +392,74 @@ function collectOrderDetails() {
 
 
 
-// Products data for the slider
-const products = [
-  { name: "Smartphone X1", desc: "Latest 5G phone with stunning display.", price: "Le 3,200", img: "red headset.png" },
-  { name: "Laptop Pro", desc: "High performance for work and play.", price: "Le 6,500", img: "black headset.jpeg" },
-  { name: "Running Shoes", desc: "Comfortable and durable for athletes.", price: "Le 850", img: "blue headset.jpeg" },
-  { name: "Blender Max", desc: "Perfect for smoothies and more.", price: "Le 420", img: "blue headset.jpeg" },
-  { name: "LED TV", desc: "Crystal-clear viewing experience.", price: "Le 4,300", img: "IMG-20250122-WA0007.jpg" },
-  { name: "Men's Watch", desc: "Ironing Clothes have never been better.", price: "Le 1,100", img: "iron.jpeg" },
-  { name: "Headphones", desc: "Clear sound and long battery.", price: "Le 600", img: "headphone.jpg" }
-];
-
-let current = 0;
-
-// Function to update product content dynamically
-function showProduct(index) {
-  const product = products[index];
+ 
+  // === PRODUCTS FOR SLIDER ===
+  const sliderProducts = [
+    {
+      name: "T Shirt",
+      description: "This is product 1 description.",
+      price: 100,
+      image: "t shirt.jpeg"
+    },
+    {
+      name: "Sneakers",
+      description: "This is product 2 description.",
+      price: 200,
+      image: "sneakers.jpg"
+    },
+    {
+      name: "Wireless Headphones",
+      description: "This is product 3 description.",
+      price: 300,
+      image: "wireless headphones.jpeg"
+    }
+  ];
   
-  // Update product info
-  document.getElementById("product-name").textContent = product.name;
-  document.getElementById("product-desc").textContent = product.desc;
-  document.getElementById("product-price").textContent = product.price;
-
-  // Update product image
-  document.getElementById("product-img").src = product.img;
-  document.getElementById("product-img").alt = product.name;
-}
-
-// Function to move to the next slide
-function nextSlide() {
-  current = (current + 1) % products.length;
-  showProduct(current);
-}
-
-// Function to move to the previous slide
-function prevSlide() {
-  current = (current - 1 + products.length) % products.length;
-  showProduct(current);
-}
-
-// Auto-slide every 5 seconds
-setInterval(nextSlide, 5000);
-showProduct(current); // Initialize the first product
+  let currentSlide = 0;
+  
+  // === UPDATE SLIDER DISPLAY ===
+  function showSlide(index) {
+    const product = sliderProducts[index];
+    document.getElementById('product-name').textContent = product.name;
+    document.getElementById('product-description').textContent = product.description;
+    document.getElementById('product-price').textContent = `Le ${product.price}`;
+    document.getElementById('product-image').src = product.image;
+  
+    // Set data attributes on the button (important for your cart system)
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    addToCartBtn.setAttribute('data-name', product.name);
+    addToCartBtn.setAttribute('data-price', product.price);
+  }
+  
+  // === SLIDE CONTROLS ===
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % sliderProducts.length;
+    showSlide(currentSlide);
+  }
+  
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + sliderProducts.length) % sliderProducts.length;
+    showSlide(currentSlide);
+  }
+  
+  // === AUTO SLIDE EVERY 5 SECONDS ===
+  setInterval(nextSlide, 5000);
+  
+  // === INITIAL LOAD ===
+  showSlide(currentSlide);
+  
+  // === RECONNECT TO YOUR EXISTING CART SYSTEM ===
+  document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'));
+   
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity += 1;
+      existingItem.totalPrice += price;
+    } else {
+      cart.push({ name, price, quantity: 1, totalPrice: price });
+    }
+   
+    updateCart();
+  });
